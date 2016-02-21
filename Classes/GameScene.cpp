@@ -28,15 +28,32 @@ bool GameScene::init(){
     auto bg = LayerColor::create(Color4B(200, 230, 250, 255), winSize.width, winSize.height);
     this->addChild(bg);
     
+    boardSize = Size(10, 10);
+    
     // create board
-    auto bl = BoardLayer::create();
-    bl->createBoard(10, 10);
+    bl = BoardLayer::create();
+    bl->createBoard(boardSize.width, boardSize.height);
     this->addChild(bl);
     
-    this->scheduleUpdate();
+    // touch
+    touch();
+    
     return true;
 }
-
-void GameScene::update(float delta){
-//    log("call me %d", rand()%10);
+void GameScene::touch() {
+    //イベントリスナーを作成
+    auto listener = EventListenerTouchOneByOne::create();
+    //タッチ開始
+    listener->onTouchBegan = [this](Touch* touch, Event* event){
+        Vec2 pos = touch->getLocation();
+        // タッチ位置よりid取得
+        log("(%f, %f)", pos.x, pos.y);
+        int ax = pos.x/boardSize.width;
+        int ay = pos.y/boardSize.height;
+        log("(%d, %d)", ax, ay);
+        bl->searchRoute(1);
+        return true;
+    };
+    //イベントリスナーを登録
+    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }

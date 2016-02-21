@@ -18,13 +18,12 @@ class BoardLayer : public cocos2d::Layer{
 public:
     virtual bool init();
     CREATE_FUNC(BoardLayer);
-    
     void createBoard(int x, int y);
+    void searchRoute(int id);
 private:
     Size winSize;
     void createNode(int x, int y);
     /** 全ノード */
-//    std::vector<NodeLayer> allNode;
     Vector<NodeLayer*> allNode;
 };
 
