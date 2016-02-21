@@ -10,6 +10,7 @@
 #define BoardLayer_hpp
 
 #include <stdio.h>
+#include "NodeLayer.hpp"
 
 USING_NS_CC;
 
@@ -22,6 +23,9 @@ public:
 private:
     Size winSize;
     void createNode(int x, int y);
+    /** 全ノード */
+//    std::vector<NodeLayer> allNode;
+    Vector<NodeLayer*> allNode;
 };
 
 #endif /* BoardLayer_hpp */
