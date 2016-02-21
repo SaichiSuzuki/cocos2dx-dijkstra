@@ -20,6 +20,7 @@ public:
     virtual bool init();
     CREATE_FUNC(GameScene);
 private:
+    Size winSize;
     void touch();
     Size boardSize;
     BoardLayer *bl;

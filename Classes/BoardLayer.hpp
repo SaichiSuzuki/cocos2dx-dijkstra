@@ -23,6 +23,7 @@ public:
 private:
     Size winSize;
     void createNode(int x, int y);
+    void setNeighborNode(int x, int y);
     /** 全ノード */
     Vector<NodeLayer*> allNode;
 };

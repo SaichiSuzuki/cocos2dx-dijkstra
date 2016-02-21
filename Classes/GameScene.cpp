@@ -24,11 +24,14 @@ bool GameScene::init(){
         return false;
     }
     
-    Size winSize = Director::getInstance()->getVisibleSize();
+    winSize = Director::getInstance()->getVisibleSize();
     auto bg = LayerColor::create(Color4B(200, 230, 250, 255), winSize.width, winSize.height);
     this->addChild(bg);
     
-    boardSize = Size(10, 10);
+    int boardX = 10;
+    int boardY = 10;
+    
+    boardSize = Size(boardX, boardY);
     
     // create board
     bl = BoardLayer::create();
@@ -46,12 +49,12 @@ void GameScene::touch() {
     //タッチ開始
     listener->onTouchBegan = [this](Touch* touch, Event* event){
         Vec2 pos = touch->getLocation();
-        // タッチ位置よりid取得
-        log("(%f, %f)", pos.x, pos.y);
-        int ax = pos.x/boardSize.width;
-        int ay = pos.y/boardSize.height;
-        log("(%d, %d)", ax, ay);
-        bl->searchRoute(1);
+        // タッチ位置より2次元配列データ取得
+        int ax = pos.x / (winSize.width/boardSize.width);
+        int ay = pos.y / (winSize.width/boardSize.width);
+        // タッチ位置より1次元配列データ取得(右の式はx軸の要素数)
+        int num = ay + (ax * (winSize.width/(winSize.width/boardSize.width)));
+        bl->searchRoute(num);
         return true;
     };
     //イベントリスナーを登録
