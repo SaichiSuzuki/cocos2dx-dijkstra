@@ -21,6 +21,11 @@ private:
     int id;
     /** mapの種類 */
     int kind;
+    /** 隣のnode */
+    Vector<int> neighborNode;
+    /** ダイクストラ用 */
+    int comeNode;
+    int cost;
 };
 
 #endif /* NodeLayer_hpp */
