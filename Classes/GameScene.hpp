@@ -22,6 +22,8 @@ public:
 private:
     Size winSize;
     void touch();
+    int posToArrayNum(Vec2 pos);
+    void moveCharactor(int num);
     Size boardSize;
     BoardLayer *bl;
 };

@@ -19,7 +19,9 @@ public:
     virtual bool init();
     CREATE_FUNC(BoardLayer);
     void createBoard(int x, int y);
-    void searchRoute(int id);
+    Vector<NodeLayer*> searchRoute(int sId, int gId);
+    void breadthFirstSearch(int sId, int gId);
+    Vector<NodeLayer*> setRoute(Vector<NodeLayer*>, int gId);
 private:
     Size winSize;
     void createNode(int x, int y);

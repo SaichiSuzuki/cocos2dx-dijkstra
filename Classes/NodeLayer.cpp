@@ -21,12 +21,11 @@ bool NodeLayer::init(){
     return true;
 }
 
-void NodeLayer::setId(int id) {
-    this->id = id;
-    log("set id:%d", id);
-}
 int NodeLayer::getId() {
     return this->id;
+}
+void NodeLayer::setId(int id) {
+    this->id = id;
 }
 void NodeLayer::setKind(int kind) {
     if (kind == 1) {
@@ -38,10 +37,41 @@ void NodeLayer::setKind(int kind) {
         this->addChild(bg);
     }
 }
-
-void NodeLayer::addNeighborNode(NodeLayer* node) {
-    neighborNode.pushBack(node);
+void NodeLayer::setDepth(int depth) {
+    this->depth = depth;
+}
+void NodeLayer::setCost(int cost) {
+    this->cost = cost;
+}
+void NodeLayer::setComeNode(NodeLayer* node) {
+    this->comeNode = node;
+}
+/**
+ *  隣ノード追加
+ *  @param node ノード
+ *  @param dist 距離
+ */
+void NodeLayer::addNeighborNode(NodeLayer* node, int dist) {
+    neighborNodes.pushBack(node);
+    neighborNodeDist.push_back(dist);
 }
 Vector<NodeLayer*> NodeLayer::getNeighborNode() {
-    return neighborNode;
+    return neighborNodes;
+}
+std::vector<int> NodeLayer::getNeighborNodeDist() {
+    return neighborNodeDist;
+}
+int NodeLayer::getDepth() {
+    return depth;
+}
+int NodeLayer::getCost() {
+    return cost;
+}
+NodeLayer* NodeLayer::getComeNode() {
+    return comeNode;
+}
+void NodeLayer::dataInit() {
+    comeNode = NULL;
+    cost = 1000;
+    depth = -1;
 }

@@ -45,35 +45,89 @@ void BoardLayer::createNode(int x, int y){
     }
 }
 void BoardLayer::setNeighborNode(int x, int y) {
-    
     for (auto node: allNode) {
         int selfId = node->getId();
         // up neighbor
         if ((selfId + 1) % y != 0) {
             auto tNode = allNode.at(selfId + 1);
-            node->addNeighborNode(tNode);
+            node->addNeighborNode(tNode, 1);
         }
         // down neighbor
         if (selfId % y != 0) {
             auto tNode = allNode.at(selfId - 1);
-            node->addNeighborNode(tNode);
+            node->addNeighborNode(tNode, 1);
         }
         // left neighbor
         if (selfId - y >= 0) {
             auto tNode = allNode.at(selfId - y);
-            node->addNeighborNode(tNode);
+            node->addNeighborNode(tNode, 1);
         }
         // right neighbor
         if (selfId + y < x * y) {
             auto tNode = allNode.at(selfId + y);
-            node->addNeighborNode(tNode);
+            node->addNeighborNode(tNode, 1);
         }
     }
 }
-void BoardLayer::searchRoute(int id){
-    log("search %d", id);
-    Vector<NodeLayer*> neighborNode = allNode.at(id)->getNeighborNode();
-    for (auto nn: neighborNode) {
-        log("nid:%d",nn->getId());
+
+Vector<NodeLayer*> BoardLayer::searchRoute(int sId, int gId){
+    breadthFirstSearch(sId, gId);
+//    Vector<NodeLayer*> neighborNode = allNode.at(gId)->getNeighborNode();
+    // スタートからゴールまでの経路を格納する
+    Vector<NodeLayer*> route;
+    route.pushBack(allNode.at(sId));
+//    Vector<NodeLayer*> tmpRoute = setRoute(route, gId);
+    route = setRoute(route, gId);
+    return route;
+}
+/** 幅優先探索 */
+void BoardLayer::breadthFirstSearch(int sId, int gId) {
+    // 全ノードの探索情報リセット
+    for (auto node: allNode) {
+        node->dataInit();
     }
+    // ゴールノードの探索情報リセット
+    allNode.at(gId)->setComeNode(allNode.at(gId));
+    allNode.at(gId)->setCost(0);
+    allNode.at(gId)->setDepth(0);
+    
+    Vector<NodeLayer*> searchList;
+    searchList.pushBack(allNode.at(gId)); // スタート位置(ゴール)の登録
+    while (!searchList.empty()) {
+        NodeLayer* searchNode = searchList.at(0);
+        // 探索リストの先頭の隣のノード一覧
+        int count = 0;
+        for (auto neighborNode: searchNode->getNeighborNode()) {
+            // 未探索の場合探索リストに追加(depth付ける)
+            if (neighborNode->getDepth() == -1) {
+                searchList.pushBack(neighborNode);
+                neighborNode->setDepth(searchNode->getDepth()+1);
+            }
+            // ここまで+隣nodeまでの距離
+            int cost = searchNode->getCost() + searchNode->getNeighborNodeDist().at(count);
+            // 新規(1000)もしくは，最短なら登録
+            if (neighborNode->getCost() > cost) {
+                neighborNode->setCost(cost);
+                neighborNode->setComeNode(searchNode);
+            }
+            count ++;
+        }
+        searchList.erase(0);
+    }
+}
+/**
+ *  探索結果を再帰的に回収する
+ *  @param route 初めstartを入れておく
+ *  @param gId   ゴールid
+ *  @return 経路
+ */
+Vector<NodeLayer*> BoardLayer::setRoute(Vector<NodeLayer*> route, int gId){
+    // 末尾の来たnodeをaddする
+    route.pushBack(route.at(route.size()-1)->getComeNode());
+    // ゴール到着
+    if (route.at(route.size()-1)->getId() == gId) {
+        return route;
+    }
+    route = setRoute(route, gId);
+    return route;
 }
