@@ -22,6 +22,7 @@ public:
     Vector<NodeLayer*> searchRoute(int sId, int gId);
     void breadthFirstSearch(int sId, int gId);
     Vector<NodeLayer*> setRoute(Vector<NodeLayer*>, int gId);
+    Vector<NodeLayer*> getAllNode();
 private:
     Size winSize;
     void createNode(int x, int y);

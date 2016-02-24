@@ -23,10 +23,12 @@ private:
     Size winSize;
     int posToArrayNum(Vec2 pos);
     Size boardSize;
+    int mathSize;
     BoardLayer *bl;
     Sprite *player;
     int playerPos;
     void createPlayer(int pos, int size);
+    void randPlayerPos();
     void moveCharactor(int num);
     void movePos();
     void touch();
@@ -34,6 +36,7 @@ private:
     int getNumFromArray(Vec2 array);
     Vec2 getArrayFromNum(int num);
     Vec2 getMapPos(int num);
+    void showDebug();
 };
 
 #endif /* GameScene_hpp */

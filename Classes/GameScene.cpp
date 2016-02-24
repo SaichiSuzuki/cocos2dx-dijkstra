@@ -29,25 +29,27 @@ bool GameScene::init(){
     auto bg = LayerColor::create(Color4B(200, 230, 250, 255), winSize.width, winSize.height);
     this->addChild(bg);
     
-    int boardX = 5;
-    int boardY = 8;
+    int boardX = 20;
+    int boardY = 30;
     
     boardSize = Size(boardX, boardY);
-    
-    playerPos = 9;
-    int playerSize = (winSize.width/boardSize.width) * 0.5; //1マス * 0.8
-    log("マスサイズ%d", playerSize);
+    mathSize = winSize.width/boardSize.width;
     
     // create board
     bl = BoardLayer::create();
     bl->createBoard(boardSize.width, boardSize.height);
     this->addChild(bl);
     
-    // Player
+    // create player
+    int playerSize = mathSize * 0.7; //1マス * 0.7
+    randPlayerPos();
     createPlayer(playerPos, playerSize);
     
     // touch
     touch();
+    
+    // Debug log
+//    showDebug();
     
     return true;
 }
@@ -59,6 +61,13 @@ void GameScene::createPlayer(int pos, int size) {
     auto aSize = Size(size,size);
     player->setScale(aSize.width/bSize.width, aSize.height/bSize.height);
     this->addChild(player);
+}
+void GameScene::randPlayerPos() {
+    playerPos = random(0,(int)(boardSize.width * boardSize.height) - 1);
+    // 壁なら
+    if (bl->getAllNode().at(playerPos)->getKind() == 1) {
+        randPlayerPos();
+    }
 }
 void GameScene::touch() {
     //イベントリスナーを作成
@@ -73,14 +82,20 @@ void GameScene::touch() {
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 void GameScene::moveCharactor(int num) {
-    log("search S:0 G:%d", num);
+//    log("search S:0 G:%d", num);
     Vector<NodeLayer*> route = bl->searchRoute(playerPos, num);
-    log("route: ");
+    for (auto dist: bl->getAllNode().at(num)->getNeighborNodeDist()) {
+//        log("距離:%d", dist);
+    }
+    if (route.size() == 0) { //壁等に引っかかった場合終了
+        log("かべ");
+        return;
+    }
     Vector<MoveTo*> moves;
     Sequence* seq;
     int firstFlag = true;
-    for (auto node: route) {
-        auto move = MoveTo::create(0.05, getMapPos(node->getId()));
+    for (auto Node: route) {
+        auto move = MoveTo::create(0.05, getMapPos(Node->getId()));
         if (firstFlag) {
             firstFlag = false;
             seq = Sequence::create(move, NULL);
@@ -108,8 +123,8 @@ int GameScene::posToArrayNum(Vec2 pos) {
  */
 Vec2 GameScene::getArrayFromPos(Vec2 pos) {
     // /の右の式はマスのサイズ
-        int ax = pos.x / (winSize.width/boardSize.width);
-        int ay = pos.y / (winSize.width/boardSize.width);
+        int ax = pos.x / mathSize;
+        int ay = pos.y / mathSize;
     return Vec2(ax, ay);
 }
 /**
@@ -137,7 +152,21 @@ Vec2 GameScene::getArrayFromNum(int num) {
  */
 Vec2 GameScene::getMapPos(int num) {
     Vec2 vec = getArrayFromNum(num);
-    vec.x = vec.x * (winSize.width/boardSize.width) + (winSize.width/boardSize.width/2);
-    vec.y = vec.y * (winSize.width/boardSize.width) + (winSize.width/boardSize.width/2);
+    vec.x = vec.x * mathSize + (mathSize/2);
+    vec.y = vec.y * mathSize + (mathSize/2);
     return vec;
+}
+
+void GameScene::showDebug() {
+    
+    string numStr = "";
+    for (int i=0; i<boardSize.width; i++){
+        for (int j=0; j<boardSize.height; j++){
+            numStr = std::to_string(j + (i * (int)boardSize.height));
+            auto numText = Label::createWithSystemFont(numStr, "HiraKakuProN-W6", 20);
+            numText->setColor(Color3B::BLACK);
+            numText->setPosition(Point(mathSize*i + mathSize/2, mathSize*j + mathSize/2));
+            this->addChild(numText);
+        }
+    }
 }

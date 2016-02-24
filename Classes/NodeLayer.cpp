@@ -24,10 +24,14 @@ bool NodeLayer::init(){
 int NodeLayer::getId() {
     return this->id;
 }
+int NodeLayer::getKind() {
+    return this->kind;
+}
 void NodeLayer::setId(int id) {
     this->id = id;
 }
 void NodeLayer::setKind(int kind) {
+    this->kind = kind;
     if (kind == 1) {
         auto bg = LayerColor::create(Color4B(240, 220, 230, 255), getContentSize().width, getContentSize().height);
         this->addChild(bg);
@@ -53,7 +57,11 @@ void NodeLayer::setComeNode(NodeLayer* node) {
  */
 void NodeLayer::addNeighborNode(NodeLayer* node, int dist) {
     neighborNodes.pushBack(node);
-    neighborNodeDist.push_back(dist);
+    if (node->getKind() == 1) { //壁なら隣との距離をありえない数にしておく
+        neighborNodeDist.push_back(dist * 10000);
+    }else {
+        neighborNodeDist.push_back(dist);
+    }
 }
 Vector<NodeLayer*> NodeLayer::getNeighborNode() {
     return neighborNodes;
@@ -69,6 +77,17 @@ int NodeLayer::getCost() {
 }
 NodeLayer* NodeLayer::getComeNode() {
     return comeNode;
+}
+/**
+ *  どこから来たかの情報があるか
+ *  ない場合壁、もしくは行けない場所を選択したことになる
+ *  @return どこから来たかnodeがあるかどうか
+ */
+bool NodeLayer::isComeNode() {
+    if (!comeNode) {
+        return false;
+    }
+        return true;
 }
 void NodeLayer::dataInit() {
     comeNode = NULL;

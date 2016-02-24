@@ -20,9 +20,11 @@ public:
     int getId();
     int getDepth();
     int getCost();
+    int getKind();
     NodeLayer* getComeNode();
     void setDepth(int depth);
     void setKind(int kind);
+    bool isComeNode();
     void setCost(int cost);
     void setComeNode(NodeLayer* node);
     void addNeighborNode(NodeLayer* node, int dist);
@@ -31,7 +33,7 @@ public:
     std::vector<int> getNeighborNodeDist();
 private:
     int id;
-    /** mapの種類 */
+    /** mapの種類 1以外:通常 1:壁 */
     int kind;
     /** 隣のnode */
     Vector<NodeLayer*> neighborNodes;

@@ -36,7 +36,7 @@ void BoardLayer::createNode(int x, int y){
             auto nl = NodeLayer::create();
             nl->setId(id);
             nl->setContentSize(Size((winSize.width/x)-3,(winSize.width/x)-3));
-            nl->setKind(2);
+            nl->setKind(random(0, 5));
             nl->setPosition(Vec2((winSize.width/x)*i, (winSize.width/x)*j));
             this->addChild(nl);
             allNode.pushBack(nl);
@@ -71,14 +71,18 @@ void BoardLayer::setNeighborNode(int x, int y) {
 }
 
 Vector<NodeLayer*> BoardLayer::searchRoute(int sId, int gId){
-    breadthFirstSearch(sId, gId);
-//    Vector<NodeLayer*> neighborNode = allNode.at(gId)->getNeighborNode();
-    // スタートからゴールまでの経路を格納する
     Vector<NodeLayer*> route;
+    // ゴールが壁なら即終了
+    if (allNode.at(gId)->getKind() == 1) {
+        return route;
+    }
+    breadthFirstSearch(sId, gId);
+    // スタートからゴールまでの経路を格納する
     route.pushBack(allNode.at(sId));
-//    Vector<NodeLayer*> tmpRoute = setRoute(route, gId);
     route = setRoute(route, gId);
-    route.erase(0);
+    if (route.size() > 0) { //成功(壁等なかった)した場合
+        route.erase(0);
+    }
     return route;
 }
 /** 幅優先探索 */
@@ -96,20 +100,33 @@ void BoardLayer::breadthFirstSearch(int sId, int gId) {
     searchList.pushBack(allNode.at(gId)); // スタート位置(ゴール)の登録
     while (!searchList.empty()) {
         NodeLayer* searchNode = searchList.at(0);
+//        log("%dの隣探索", searchNode->getId());
         // 探索リストの先頭の隣のノード一覧
         int count = 0;
         for (auto neighborNode: searchNode->getNeighborNode()) {
             // 未探索の場合探索リストに追加(depth付ける)
             if (neighborNode->getDepth() == -1) {
-                searchList.pushBack(neighborNode);
-                neighborNode->setDepth(searchNode->getDepth()+1);
+                // 壁の場合探索リストに追加しない
+                if (neighborNode->getKind() == 1) {
+                    //                    continue;
+                }else {
+                    searchList.pushBack(neighborNode);
+                    neighborNode->setDepth(searchNode->getDepth()+1);
+                }
+//                if (neighborNode->getKind() == 0) {
+//                    searchList.pushBack(neighborNode);
+//                    neighborNode->setDepth(searchNode->getDepth()+1);
+//                }
             }
             // ここまで+隣nodeまでの距離
             int cost = searchNode->getCost() + searchNode->getNeighborNodeDist().at(count);
             // 新規(1000)もしくは，最短なら登録
             if (neighborNode->getCost() > cost) {
+//            log("隣の設定コスト%d", neighborNode->getCost());
+//            log("新規コスト%d", cost);
                 neighborNode->setCost(cost);
                 neighborNode->setComeNode(searchNode);
+//                log("  %dnodeは%dからきたとセット",neighborNode->getId(), searchNode->getId());
             }
             count ++;
         }
@@ -123,6 +140,16 @@ void BoardLayer::breadthFirstSearch(int sId, int gId) {
  *  @return 経路
  */
 Vector<NodeLayer*> BoardLayer::setRoute(Vector<NodeLayer*> route, int gId){
+//    log("現在のルート");
+//    for (auto r: route) {
+//        log("r:%d",r->getId());
+//    }
+    // 行けるか確認
+    if (!route.at(route.size()-1)->isComeNode()) {
+//        log("どこからもこれません");
+        Vector<NodeLayer*> tmp;
+        return tmp;
+    }
     // 末尾の来たnodeをaddする
     route.pushBack(route.at(route.size()-1)->getComeNode());
     // ゴール到着
@@ -131,4 +158,8 @@ Vector<NodeLayer*> BoardLayer::setRoute(Vector<NodeLayer*> route, int gId){
     }
     route = setRoute(route, gId);
     return route;
+}
+
+Vector<NodeLayer*> BoardLayer::getAllNode(){
+    return allNode;
 }
