@@ -21,11 +21,17 @@ public:
     CREATE_FUNC(GameScene);
 private:
     Size winSize;
-    void touch();
     int posToArrayNum(Vec2 pos);
-    void moveCharactor(int num);
     Size boardSize;
     BoardLayer *bl;
+    Sprite *player;
+    void createPlayer(int pos, int size);
+    void moveCharactor(int num);
+    void touch();
+    Vec2 getArrayFromPos(Vec2 pos);
+    int getNumFromArray(Vec2 array);
+    Vec2 getArrayFromNum(int num);
+    Vec2 getMapPos(int num);
 };
 
 #endif /* GameScene_hpp */

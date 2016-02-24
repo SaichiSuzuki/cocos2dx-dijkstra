@@ -10,6 +10,9 @@
 		15670C4A1C797D8C000421E4 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15670C481C797D8C000421E4 /* GameScene.cpp */; };
 		15670C4D1C798324000421E4 /* BoardLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15670C4B1C798324000421E4 /* BoardLayer.cpp */; };
 		15670C501C7995FD000421E4 /* NodeLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15670C4E1C7995FD000421E4 /* NodeLayer.cpp */; };
+		15CE8D841C7C141C0087F68C /* simaumar03.png in Resources */ = {isa = PBXBuildFile; fileRef = 15CE8D821C7C141C0087F68C /* simaumar03.png */; };
+		15CE8D851C7C141C0087F68C /* simaumar04.png in Resources */ = {isa = PBXBuildFile; fileRef = 15CE8D831C7C141C0087F68C /* simaumar04.png */; };
+		15CE8D8F1C7C20530087F68C /* PlayerController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15CE8D8D1C7C20530087F68C /* PlayerController.cpp */; };
 		1AC6FB21180E996B004C840B /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */; };
 		1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB07180E9839004C840B /* libcocos2d iOS.a */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -110,6 +113,10 @@
 		15670C4C1C798324000421E4 /* BoardLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BoardLayer.hpp; sourceTree = "<group>"; };
 		15670C4E1C7995FD000421E4 /* NodeLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NodeLayer.cpp; sourceTree = "<group>"; };
 		15670C4F1C7995FD000421E4 /* NodeLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NodeLayer.hpp; sourceTree = "<group>"; };
+		15CE8D821C7C141C0087F68C /* simaumar03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = simaumar03.png; sourceTree = "<group>"; };
+		15CE8D831C7C141C0087F68C /* simaumar04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = simaumar04.png; sourceTree = "<group>"; };
+		15CE8D8D1C7C20530087F68C /* PlayerController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerController.cpp; sourceTree = "<group>"; };
+		15CE8D8E1C7C20530087F68C /* PlayerController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerController.hpp; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -290,6 +297,8 @@
 				46880B7619C43A67006E1F66 /* CloseNormal.png */,
 				46880B7719C43A67006E1F66 /* CloseSelected.png */,
 				46880B7A19C43A67006E1F66 /* HelloWorld.png */,
+				15CE8D821C7C141C0087F68C /* simaumar03.png */,
+				15CE8D831C7C141C0087F68C /* simaumar04.png */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -304,6 +313,8 @@
 				46880B8719C43A87006E1F66 /* HelloWorldScene.h */,
 				15670C481C797D8C000421E4 /* GameScene.cpp */,
 				15670C491C797D8C000421E4 /* GameScene.hpp */,
+				15CE8D8D1C7C20530087F68C /* PlayerController.cpp */,
+				15CE8D8E1C7C20530087F68C /* PlayerController.hpp */,
 				15670C4B1C798324000421E4 /* BoardLayer.cpp */,
 				15670C4C1C798324000421E4 /* BoardLayer.hpp */,
 				15670C4E1C7995FD000421E4 /* NodeLayer.cpp */,
@@ -471,6 +482,7 @@
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
+				15CE8D841C7C141C0087F68C /* simaumar03.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
@@ -482,6 +494,7 @@
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */,
+				15CE8D851C7C141C0087F68C /* simaumar04.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -512,6 +525,7 @@
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				15CE8D8F1C7C20530087F68C /* PlayerController.cpp in Sources */,
 				15670C4A1C797D8C000421E4 /* GameScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);
