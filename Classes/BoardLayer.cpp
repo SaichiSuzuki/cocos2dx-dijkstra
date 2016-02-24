@@ -78,6 +78,7 @@ Vector<NodeLayer*> BoardLayer::searchRoute(int sId, int gId){
     route.pushBack(allNode.at(sId));
 //    Vector<NodeLayer*> tmpRoute = setRoute(route, gId);
     route = setRoute(route, gId);
+    route.erase(0);
     return route;
 }
 /** 幅優先探索 */

@@ -34,7 +34,7 @@ bool GameScene::init(){
     
     boardSize = Size(boardX, boardY);
     
-    int playerPos = 9;
+    playerPos = 9;
     int playerSize = (winSize.width/boardSize.width) * 0.5; //1マス * 0.8
     log("マスサイズ%d", playerSize);
     
@@ -74,14 +74,22 @@ void GameScene::touch() {
 }
 void GameScene::moveCharactor(int num) {
     log("search S:0 G:%d", num);
-    Vector<NodeLayer*> route = bl->searchRoute(0, num);
+    Vector<NodeLayer*> route = bl->searchRoute(playerPos, num);
     log("route: ");
+    Vector<MoveTo*> moves;
+    Sequence* seq;
+    int firstFlag = true;
     for (auto node: route) {
-        log("%d, ", node->getId());
+        auto move = MoveTo::create(0.05, getMapPos(node->getId()));
+        if (firstFlag) {
+            firstFlag = false;
+            seq = Sequence::create(move, NULL);
+        } else {
+            seq = Sequence::create(seq, move, NULL);
+        }
     }
-    // vecがあれば
-    // forでvec回してsequenceで絶対位置に移動
-    // アニメーションスタート
+    playerPos = route.at(route.size()-1)->getId();
+    player->runAction(seq);
 }
 int GameScene::posToArrayNum(Vec2 pos) {
         // タッチ位置より2次元配列データ取得

@@ -25,8 +25,10 @@ private:
     Size boardSize;
     BoardLayer *bl;
     Sprite *player;
+    int playerPos;
     void createPlayer(int pos, int size);
     void moveCharactor(int num);
+    void movePos();
     void touch();
     Vec2 getArrayFromPos(Vec2 pos);
     int getNumFromArray(Vec2 array);
