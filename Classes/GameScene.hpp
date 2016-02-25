@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "BoardLayer.hpp"
+#include "ui/CocosGUI.h"
 
 USING_NS_CC;
 
@@ -37,6 +38,7 @@ private:
     Vec2 getArrayFromNum(int num);
     Vec2 getMapPos(int num);
     void showDebug();
+    void buttonTouchEventListener(Ref* pSender, ui::Widget::TouchEventType type);
 };
 
 #endif /* GameScene_hpp */

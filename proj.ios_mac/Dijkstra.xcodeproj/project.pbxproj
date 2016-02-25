@@ -10,6 +10,7 @@
 		15670C4A1C797D8C000421E4 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15670C481C797D8C000421E4 /* GameScene.cpp */; };
 		15670C4D1C798324000421E4 /* BoardLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15670C4B1C798324000421E4 /* BoardLayer.cpp */; };
 		15670C501C7995FD000421E4 /* NodeLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15670C4E1C7995FD000421E4 /* NodeLayer.cpp */; };
+		15A802D91C7DF54E00ECBD35 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A802D71C7DF54E00ECBD35 /* TitleScene.cpp */; };
 		15CE8D841C7C141C0087F68C /* simaumar03.png in Resources */ = {isa = PBXBuildFile; fileRef = 15CE8D821C7C141C0087F68C /* simaumar03.png */; };
 		15CE8D851C7C141C0087F68C /* simaumar04.png in Resources */ = {isa = PBXBuildFile; fileRef = 15CE8D831C7C141C0087F68C /* simaumar04.png */; };
 		15CE8D8F1C7C20530087F68C /* PlayerController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15CE8D8D1C7C20530087F68C /* PlayerController.cpp */; };
@@ -113,6 +114,8 @@
 		15670C4C1C798324000421E4 /* BoardLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BoardLayer.hpp; sourceTree = "<group>"; };
 		15670C4E1C7995FD000421E4 /* NodeLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NodeLayer.cpp; sourceTree = "<group>"; };
 		15670C4F1C7995FD000421E4 /* NodeLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NodeLayer.hpp; sourceTree = "<group>"; };
+		15A802D71C7DF54E00ECBD35 /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleScene.cpp; path = ../proj.ios_mac/TitleScene.cpp; sourceTree = "<group>"; };
+		15A802D81C7DF54E00ECBD35 /* TitleScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TitleScene.hpp; path = ../proj.ios_mac/TitleScene.hpp; sourceTree = "<group>"; };
 		15CE8D821C7C141C0087F68C /* simaumar03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = simaumar03.png; sourceTree = "<group>"; };
 		15CE8D831C7C141C0087F68C /* simaumar04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = simaumar04.png; sourceTree = "<group>"; };
 		15CE8D8D1C7C20530087F68C /* PlayerController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerController.cpp; sourceTree = "<group>"; };
@@ -311,6 +314,8 @@
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */,
 				46880B8719C43A87006E1F66 /* HelloWorldScene.h */,
+				15A802D71C7DF54E00ECBD35 /* TitleScene.cpp */,
+				15A802D81C7DF54E00ECBD35 /* TitleScene.hpp */,
 				15670C481C797D8C000421E4 /* GameScene.cpp */,
 				15670C491C797D8C000421E4 /* GameScene.hpp */,
 				15CE8D8D1C7C20530087F68C /* PlayerController.cpp */,
@@ -419,7 +424,7 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = MDDB52YB8L;
+						DevelopmentTeam = F6J8C42VFF;
 					};
 				};
 			};
@@ -522,6 +527,7 @@
 				15670C4D1C798324000421E4 /* BoardLayer.cpp in Sources */,
 				15670C501C7995FD000421E4 /* NodeLayer.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				15A802D91C7DF54E00ECBD35 /* TitleScene.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
@@ -562,7 +568,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
+				ENABLE_BITCODE = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -580,12 +588,13 @@
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios/Simulation",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
@@ -598,7 +607,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
+				ENABLE_BITCODE = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ios/Prefix.pch;
@@ -614,12 +625,13 @@
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios/Simulation",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";

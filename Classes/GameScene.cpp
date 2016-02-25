@@ -9,6 +9,7 @@
 #include "GameScene.hpp"
 #include "BoardLayer.hpp"
 #include "PlayerController.hpp"
+#include "ui/CocosGUI.h"
 
 USING_NS_CC;
 using namespace std;
@@ -29,8 +30,8 @@ bool GameScene::init(){
     auto bg = LayerColor::create(Color4B(200, 230, 250, 255), winSize.width, winSize.height);
     this->addChild(bg);
     
-    int boardX = 20;
-    int boardY = 30;
+    int boardX = random(3, 30);
+    int boardY = random(3, 30);
     
     boardSize = Size(boardX, boardY);
     mathSize = winSize.width/boardSize.width;
@@ -50,6 +51,13 @@ bool GameScene::init(){
     
     // Debug log
 //    showDebug();
+    
+    // back button
+    auto button = ui::Button::create();
+    button->loadTextures("CloseSelected.png", "CloseSelected.png", "CloseSelected.png");
+    button->setPosition(Point(25, winSize.height - 25));
+    button->addTouchEventListener(CC_CALLBACK_2(GameScene::buttonTouchEventListener, this));
+    this->addChild(button);
     
     return true;
 }
@@ -168,5 +176,22 @@ void GameScene::showDebug() {
             numText->setPosition(Point(mathSize*i + mathSize/2, mathSize*j + mathSize/2));
             this->addChild(numText);
         }
+    }
+}
+
+void GameScene:: buttonTouchEventListener(Ref* pSender, ui::Widget::TouchEventType type)
+{
+    switch (type) {
+        case ui::Widget::TouchEventType::BEGAN:
+            break;
+        case ui::Widget::TouchEventType::MOVED:
+            break;
+        case ui::Widget::TouchEventType::CANCELED:
+            break;
+        case ui::Widget::TouchEventType::ENDED:
+            Director::getInstance()->replaceScene(GameScene::createScene());
+            break;
+        default:
+            break;
     }
 }
