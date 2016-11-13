@@ -1,0 +1,83 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+addNeighborNode	NodeLayer.cpp	/^void NodeLayer::addNeighborNode(NodeLayer* node, int dist) {$/;"	f	class:NodeLayer
+allNode	BoardLayer.hpp	/^    Vector<NodeLayer*> allNode;$/;"	m	class:BoardLayer
+AppDelegate	AppDelegate.cpp	/^AppDelegate::AppDelegate() {$/;"	f	class:AppDelegate
+AppDelegate	AppDelegate.h	/^class  AppDelegate : private cocos2d::Application$/;"	c
+applicationDidEnterBackground	AppDelegate.cpp	/^void AppDelegate::applicationDidEnterBackground() {$/;"	f	class:AppDelegate
+applicationDidFinishLaunching	AppDelegate.cpp	/^bool AppDelegate::applicationDidFinishLaunching() {$/;"	f	class:AppDelegate
+applicationWillEnterForeground	AppDelegate.cpp	/^void AppDelegate::applicationWillEnterForeground() {$/;"	f	class:AppDelegate
+bl	GameScene.hpp	/^    BoardLayer *bl;$/;"	m	class:GameScene
+BoardLayer	BoardLayer.hpp	/^class BoardLayer : public cocos2d::Layer{$/;"	c
+BoardLayer_hpp	BoardLayer.hpp	/^#define BoardLayer_hpp$/;"	d
+boardSize	GameScene.hpp	/^    Size boardSize;$/;"	m	class:GameScene
+breadthFirstSearch	BoardLayer.cpp	/^void BoardLayer::breadthFirstSearch(int sId, int gId) {$/;"	f	class:BoardLayer
+buttonTouchEventListener	GameScene.cpp	/^void GameScene:: buttonTouchEventListener(Ref* pSender, ui::Widget::TouchEventType type)$/;"	f	class:GameScene
+comeNode	NodeLayer.hpp	/^    NodeLayer* comeNode;$/;"	m	class:NodeLayer
+cost	NodeLayer.hpp	/^    int cost;$/;"	m	class:NodeLayer
+create	PlayerController.cpp	/^PlayerController* PlayerController::create(int pos){$/;"	f	class:PlayerController
+createBoard	BoardLayer.cpp	/^void BoardLayer::createBoard(int x, int y){$/;"	f	class:BoardLayer
+createNode	BoardLayer.cpp	/^void BoardLayer::createNode(int x, int y){$/;"	f	class:BoardLayer
+createPlayer	GameScene.cpp	/^void GameScene::createPlayer(int pos, int size) {$/;"	f	class:GameScene
+createScene	GameScene.cpp	/^Scene* GameScene::createScene(){$/;"	f	class:GameScene
+createScene	HelloWorldScene.cpp	/^Scene* HelloWorld::createScene()$/;"	f	class:HelloWorld
+dataInit	NodeLayer.cpp	/^void NodeLayer::dataInit() {$/;"	f	class:NodeLayer
+depth	NodeLayer.hpp	/^    int depth;$/;"	m	class:NodeLayer
+GameScene	GameScene.hpp	/^class GameScene : public cocos2d::Layer{$/;"	c
+GameScene_hpp	GameScene.hpp	/^#define GameScene_hpp$/;"	d
+getAllNode	BoardLayer.cpp	/^Vector<NodeLayer*> BoardLayer::getAllNode(){$/;"	f	class:BoardLayer
+getArrayFromNum	GameScene.cpp	/^Vec2 GameScene::getArrayFromNum(int num) {$/;"	f	class:GameScene
+getArrayFromPos	GameScene.cpp	/^Vec2 GameScene::getArrayFromPos(Vec2 pos) {$/;"	f	class:GameScene
+getComeNode	NodeLayer.cpp	/^NodeLayer* NodeLayer::getComeNode() {$/;"	f	class:NodeLayer
+getCost	NodeLayer.cpp	/^int NodeLayer::getCost() {$/;"	f	class:NodeLayer
+getDepth	NodeLayer.cpp	/^int NodeLayer::getDepth() {$/;"	f	class:NodeLayer
+getId	NodeLayer.cpp	/^int NodeLayer::getId() {$/;"	f	class:NodeLayer
+getKind	NodeLayer.cpp	/^int NodeLayer::getKind() {$/;"	f	class:NodeLayer
+getMapPos	GameScene.cpp	/^Vec2 GameScene::getMapPos(int num) {$/;"	f	class:GameScene
+getNeighborNode	NodeLayer.cpp	/^Vector<NodeLayer*> NodeLayer::getNeighborNode() {$/;"	f	class:NodeLayer
+getNeighborNodeDist	NodeLayer.cpp	/^std::vector<int> NodeLayer::getNeighborNodeDist() {$/;"	f	class:NodeLayer
+getNumFromArray	GameScene.cpp	/^int GameScene::getNumFromArray(Vec2 array) {$/;"	f	class:GameScene
+HelloWorld	HelloWorldScene.h	/^class HelloWorld : public cocos2d::Layer$/;"	c
+id	NodeLayer.hpp	/^    int id;$/;"	m	class:NodeLayer
+init	BoardLayer.cpp	/^bool BoardLayer::init(){$/;"	f	class:BoardLayer
+init	GameScene.cpp	/^bool GameScene::init(){$/;"	f	class:GameScene
+init	HelloWorldScene.cpp	/^bool HelloWorld::init()$/;"	f	class:HelloWorld
+init	NodeLayer.cpp	/^bool NodeLayer::init(){$/;"	f	class:NodeLayer
+init	PlayerController.cpp	/^bool PlayerController::init(int pos){$/;"	f	class:PlayerController
+initGLContextAttrs	AppDelegate.cpp	/^void AppDelegate::initGLContextAttrs()$/;"	f	class:AppDelegate
+isComeNode	NodeLayer.cpp	/^bool NodeLayer::isComeNode() {$/;"	f	class:NodeLayer
+kind	NodeLayer.hpp	/^    int kind;$/;"	m	class:NodeLayer
+mathSize	GameScene.hpp	/^    int mathSize;$/;"	m	class:GameScene
+menuCloseCallback	HelloWorldScene.cpp	/^void HelloWorld::menuCloseCallback(Ref* pSender)$/;"	f	class:HelloWorld
+moveCharactor	GameScene.cpp	/^void GameScene::moveCharactor(int num) {$/;"	f	class:GameScene
+neighborNodeDist	NodeLayer.hpp	/^    std::vector<int> neighborNodeDist;$/;"	m	class:NodeLayer
+neighborNodes	NodeLayer.hpp	/^    Vector<NodeLayer*> neighborNodes;$/;"	m	class:NodeLayer
+NodeLayer	NodeLayer.cpp	/^NodeLayer::NodeLayer() {}$/;"	f	class:NodeLayer
+NodeLayer	NodeLayer.hpp	/^class NodeLayer : public cocos2d::Layer{$/;"	c
+NodeLayer_hpp	NodeLayer.hpp	/^#define NodeLayer_hpp$/;"	d
+player	GameScene.hpp	/^    Sprite *player;$/;"	m	class:GameScene
+PlayerController	PlayerController.hpp	/^class PlayerController : public cocos2d::Sprite{$/;"	c
+PlayerController_hpp	PlayerController.hpp	/^#define PlayerController_hpp$/;"	d
+playerPos	GameScene.hpp	/^    int playerPos;$/;"	m	class:GameScene
+posToArrayNum	GameScene.cpp	/^int GameScene::posToArrayNum(Vec2 pos) {$/;"	f	class:GameScene
+randPlayerPos	GameScene.cpp	/^void GameScene::randPlayerPos() {$/;"	f	class:GameScene
+register_all_packages	AppDelegate.cpp	/^static int register_all_packages()$/;"	f	file:
+searchRoute	BoardLayer.cpp	/^Vector<NodeLayer*> BoardLayer::searchRoute(int sId, int gId){$/;"	f	class:BoardLayer
+setComeNode	NodeLayer.cpp	/^void NodeLayer::setComeNode(NodeLayer* node) {$/;"	f	class:NodeLayer
+setCost	NodeLayer.cpp	/^void NodeLayer::setCost(int cost) {$/;"	f	class:NodeLayer
+setDepth	NodeLayer.cpp	/^void NodeLayer::setDepth(int depth) {$/;"	f	class:NodeLayer
+setId	NodeLayer.cpp	/^void NodeLayer::setId(int id) {$/;"	f	class:NodeLayer
+setKind	NodeLayer.cpp	/^void NodeLayer::setKind(int kind) {$/;"	f	class:NodeLayer
+setNeighborNode	BoardLayer.cpp	/^void BoardLayer::setNeighborNode(int x, int y) {$/;"	f	class:BoardLayer
+setRoute	BoardLayer.cpp	/^Vector<NodeLayer*> BoardLayer::setRoute(Vector<NodeLayer*> route, int gId){$/;"	f	class:BoardLayer
+showDebug	GameScene.cpp	/^void GameScene::showDebug() {$/;"	f	class:GameScene
+touch	GameScene.cpp	/^void GameScene::touch() {$/;"	f	class:GameScene
+winSize	BoardLayer.hpp	/^    Size winSize;$/;"	m	class:BoardLayer
+winSize	GameScene.hpp	/^    Size winSize;$/;"	m	class:GameScene
+_APP_DELEGATE_H_	AppDelegate.h	/^#define  _APP_DELEGATE_H_$/;"	d
+__HELLOWORLD_SCENE_H__	HelloWorldScene.h	/^#define __HELLOWORLD_SCENE_H__$/;"	d
+~AppDelegate	AppDelegate.cpp	/^AppDelegate::~AppDelegate() $/;"	f	class:AppDelegate
